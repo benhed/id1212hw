@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Converter HW4</title>
+    </h:head>
+    <h:body>
+        <h1>Converter HW4</h1>
+        <h:form>
+            <p>
+                <h:commandButton value="Update rates" action="#{viewHandler.updateDB()}"/>
+            </p>
+        </h:form>
+        <h:form>
+            <p>
+                
+                <h:outputLabel for="fromCurrency" value="Currency I have:"/>
+                <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+                <h:outputLabel for="toCurrency" value="Currency I want: "/>
+                
+                <br/>
+                <h:inputText id="fromCurrency" value="#{viewHandler.haveCurrencyAbbreviation}"/>
+                <h:outputText value="&#160;"/>
+                <h:inputText id="toCurrency" value="#{viewHandler.wantCurrencyAbbreviation}"/>
+                <br/>
+                <h:outputLabel for="amount" value="Amount to convert: "/>
+                <br/>
+                <h:inputText id="amount" value="#{viewHandler.haveCurrencyAmount}"/>
+
+            </p>
+            <p>
+                <h:commandButton value="convert" action="#{viewHandler.convert()}"/>
+            </p>
+
+        </h:form>
+        <p>
+            <h:outputLabel for="fromCurrencyAmount" rendered="#{viewHandler.haveCurrencyAmount != 0}" value=""/>
+            <h:outputText id="fromCurrencyAmount" value="#{viewHandler.haveCurrencyAmount}"/>
+            
+            <h:outputLabel for="fromCurrencyName" rendered="#{viewHandler.haveCurrency != null}" value=" "/>
+            <h:outputText id="fromCurrencyName" value="#{viewHandler.haveCurrency.abbr}"/>
+            
+            <h:outputLabel for="convertedValue" rendered="#{viewHandler.convertedValue != 0}" value=" equals "/>
+            <h:outputText id="convertedValue" value="#{viewHandler.convertedValue}"/>
+            
+            <h:outputLabel for="toCurrencyName" rendered="#{viewHandler.wantCurrency != null}" value=" "/>
+            <h:outputText id="toCurrencyName" value="#{viewHandler.wantCurrency.abbr}"/>
+        </p>
+    </h:body>
+</html>
+
